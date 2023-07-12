@@ -1,5 +1,4 @@
-from telebot.types import (KeyboardButton, ReplyKeyboardMarkup,
-                           ReplyKeyboardRemove)
+from telebot.types import KeyboardButton, ReplyKeyboardMarkup, ReplyKeyboardRemove
 
 TEXT_FOR_ANSWER = [
     [
@@ -36,7 +35,7 @@ TEXT_FOR_ANSWER_VOICE = [
 ]
 
 
-def answer_for_photo() -> ReplyKeyboardMarkup:
+def answer_for_photo():
     rkb = ReplyKeyboardMarkup(resize_keyboard=True, row_width=2)
     kbs = [KeyboardButton(text=kb_text) for kb_text, _ in TEXT_FOR_ANSWER]
     rkb.add(*kbs)
@@ -44,7 +43,7 @@ def answer_for_photo() -> ReplyKeyboardMarkup:
     return rkb
 
 
-def answer_for_voice() -> ReplyKeyboardMarkup:
+def answer_for_voice():
     rkb = ReplyKeyboardMarkup(resize_keyboard=True, row_width=2)
     kbs = [KeyboardButton(text=kb_text) for kb_text, _ in TEXT_FOR_ANSWER_VOICE]
     rkb.add(*kbs)

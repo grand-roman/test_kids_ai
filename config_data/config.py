@@ -14,6 +14,7 @@ DEFAULT_COMMANDS = (
     ("look_photo", "Посмотреть фото"),
     ("my_info", "Информация обо мне"),
     ("get_voice", "Голосовые ответы"),
+    ("get_link_this_bot", "Ссылка на проект"),
 )
 
 MY_INFO = (
@@ -27,3 +28,9 @@ MY_INFO = (
     "И самое главное – пишите код в своё удовольствие.\n"
     "А я буду тебе в этом помогать!"
 )
+
+LINK_TO_GITHUB = "https://github.com/grand-roman/test_kids_ai"
+
+LANGUAGE = "ru_RU"
+
+PATH_FOR_VOICE = "voice/recognise/voice/"

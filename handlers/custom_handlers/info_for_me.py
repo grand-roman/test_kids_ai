@@ -1,4 +1,4 @@
-from telebot.types import Message, ReplyKeyboardRemove
+from telebot.types import Message
 
 from config_data.config import MY_INFO
 from keyboards.reply.reply_kb import (TEXT_FOR_ANSWER, TEXT_FOR_ANSWER_VOICE,
@@ -10,7 +10,6 @@ from loader import bot
     commands=["my_info"],
 )
 def my_info(message: Message) -> None:
-
     bot.send_message(message.from_user.id, MY_INFO)
 
 
@@ -18,7 +17,6 @@ def my_info(message: Message) -> None:
     commands=["look_photo"],
 )
 def get_photo(message: Message) -> None:
-
     bot.send_message(
         message.from_user.id,
         "Какое фото нужно посмотреть?",
@@ -30,17 +28,19 @@ def get_photo(message: Message) -> None:
 def results_photo(message: Message) -> None:
     if message.text == TEXT_FOR_ANSWER[0][0]:
         photo = open(TEXT_FOR_ANSWER[0][1], "rb")
-    else:
+    elif message.text == TEXT_FOR_ANSWER[1][0]:
         photo = open(TEXT_FOR_ANSWER[1][1], "rb")
+    else:
+        remove_keyboard(message, TEXT_FOR_ANSWER[2][1])
+        return
 
     bot.send_photo(message.from_user.id, photo)
     photo.close()
-    remove_keyboard(message)
+    get_photo(message)
 
 
 @bot.message_handler(commands=["get_voice"])
 def get_voice(message: Message) -> None:
-
     bot.send_message(
         message.from_user.id, "Что хочешь послушать?", reply_markup=answer_for_voice()
     )
@@ -52,15 +52,20 @@ def results_voice(message: Message) -> None:
         audio = open(TEXT_FOR_ANSWER_VOICE[0][1], "rb")
     elif message.text == TEXT_FOR_ANSWER_VOICE[1][0]:
         audio = open(TEXT_FOR_ANSWER_VOICE[1][1], "rb")
-    else:
+    elif message.text == TEXT_FOR_ANSWER_VOICE[2][0]:
         audio = open(TEXT_FOR_ANSWER_VOICE[2][1], "rb")
+    else:
+        remove_keyboard(message, TEXT_FOR_ANSWER_VOICE[3][1])
+        return
 
     bot.send_audio(message.chat.id, audio)
     audio.close()
-    remove_keyboard(message)
+    get_voice(message)
 
 
-def remove_keyboard(message):
+def remove_keyboard(message, reply_markup_remove):
     bot.send_message(
-        message.from_user.id, "Что дальше?", reply_markup=ReplyKeyboardRemove()
+        message.from_user.id,
+        "Что еще хотите узнать?",
+        reply_markup=reply_markup_remove(),
     )

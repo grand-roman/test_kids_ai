@@ -1,4 +1,5 @@
-from telebot.types import KeyboardButton, ReplyKeyboardMarkup
+from telebot.types import (KeyboardButton, ReplyKeyboardMarkup,
+                           ReplyKeyboardRemove)
 
 TEXT_FOR_ANSWER = [
     [
@@ -8,6 +9,10 @@ TEXT_FOR_ANSWER = [
     [
         "Фото из старшей школы",
         "photo/2.jpg",
+    ],
+    [
+        "Выйти",
+        ReplyKeyboardRemove,
     ],
 ]
 
@@ -23,6 +28,10 @@ TEXT_FOR_ANSWER_VOICE = [
     [
         "История первой любви",
         "voice/test.mp3",
+    ],
+    [
+        "Выйти",
+        ReplyKeyboardRemove,
     ],
 ]
 

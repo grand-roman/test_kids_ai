@@ -1,20 +1,29 @@
 # Тестовое наставника kids ai
 
 ## Запуск
+```
 pip install -r requirements.txt
-python main.py  
+```
+```
+python main.py
+```
 
 Возможно потребуется установить ffmpeg
 
-Для MAC OS
+#### Для MAC OS
+```
 brew install ffmpeg
+```
 
-Для Linux
+#### Для Linux
+```
 sudo apt install ffmpeg
+```
 
-для Windows 
+#### для Windows
+```
 https://www.geeksforgeeks.org/how-to-install-ffmpeg-on-windows/
-
+```
 
 ## ТЗ
 

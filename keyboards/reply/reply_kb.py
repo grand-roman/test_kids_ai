@@ -18,15 +18,15 @@ TEXT_FOR_ANSWER = [
 TEXT_FOR_ANSWER_VOICE = [
     [
         "Рассказ в формате «объясняю своей бабушке», что такое GPT",
-        "voice/test.mp3",
+        "voice/1_ques.wav",
     ],
     [
         "Максимально коротко объясняю разницу между SQL и NoSQL",
-        "voice/test.mp3",
+        "voice/2_ques.wav",
     ],
     [
         "История первой любви",
-        "voice/test.mp3",
+        "voice/3_ques.wav",
     ],
     [
         "Выйти",

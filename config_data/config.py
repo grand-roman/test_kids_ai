@@ -30,6 +30,7 @@ MY_INFO = (
 )
 
 LINK_TO_GITHUB = "https://github.com/grand-roman/test_kids_ai"
+LINK_TO_VIDEO = "https://youtu.be/n2_7FWoFjCU"
 
 LANGUAGE = "ru_RU"
 

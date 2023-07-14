@@ -38,11 +38,14 @@ def gen_request(text):
     req = urllib.request.Request(api_url, data=params, headers=headers)
     response = urllib.request.urlopen(req)
     text = response.read().decode("unicode-escape")
-    begin = text.find('text": "')
+    text_first = 'text": "'
+    begin = text.find(text_first)
     end = text.find('", "is_cached"')
     text = text[begin:end]
     if not text:
         text = "Походу балабола поломалась"
+    else:
+        text = text[len(text_first) :]
     return text
 
 
@@ -67,12 +70,6 @@ def voice_processing(message):
 
     subprocess.run(["ffmpeg", "-y", "-i", file_name_full_ogg, file_name_full_wav])
     text = recognise(file_name_full_wav)
-    call_command = "/"
-
-    for command, desk in DEFAULT_COMMANDS:
-        if text in desk.lower():
-            call_command += command
-            break
 
     bot.reply_to(message, text)
     os.remove(file_name_full_ogg)

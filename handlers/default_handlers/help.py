@@ -7,6 +7,10 @@ from loader import bot
 def bot_help(message):
     kb = create_button(DEFAULT_COMMANDS[2:])
     bot.send_message(message.from_user.id, "Команды бота:", reply_markup=kb)
+    bot.send_message(
+        message.from_user.id,
+        "Так же можешь поговорить со мной, если отправишь голосовое сообщение",
+    )
 
 
 @bot.message_handler(commands=["nextstep"])

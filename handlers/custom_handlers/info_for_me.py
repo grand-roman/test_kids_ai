@@ -1,6 +1,6 @@
 from telebot.types import Message
 
-from config_data.config import LINK_TO_GITHUB, MY_INFO
+from config_data.config import LINK_TO_GITHUB, LINK_TO_VIDEO, MY_INFO
 from keyboards.reply.reply_kb import (
     TEXT_FOR_ANSWER,
     TEXT_FOR_ANSWER_VOICE,
@@ -79,6 +79,8 @@ def results_voice(message):
         return
 
     bot.send_audio(message.chat.id, audio)
+    if message.text == TEXT_FOR_ANSWER_VOICE[2][0]:
+        bot.send_message(message.chat.id, LINK_TO_VIDEO)
     audio.close()
     get_voice(message)
 
